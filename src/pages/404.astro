@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<Base title="Page not found | Morano USA" description="The page you are looking for does not exist or has moved." path="/404/" noindex>
+  <section class="wrap notfound">
+    <p class="label">Error 404</p>
+    <h1 class="display">Page not found</h1>
+    <p class="lead muted">This address does not exist or has changed. Go back home or explore our products.</p>
+    <div class="hero__ctas">
+      <a class="btn btn--accent" href="/">Go home <Icon name="arrow" /></a>
+      <a class="btn btn--outline" href="/#products">Our products</a>
+    </div>
+  </section>
+</Base>

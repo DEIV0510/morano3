@@ -1,0 +1,39 @@
+---
+// Términos y condiciones comerciales: el PDF oficial de Morano USA (el mismo que
+// publica hoy moranousa.com en esta dirección). No se transcribe el contenido.
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../lib/site.ts';
+---
+
+<Base
+  title="Commercial Sales Terms and Conditions | Morano USA"
+  description="Commercial sales terms and conditions of Morano USA, LLC (PDF)."
+  path={SITE.terminos}
+>
+  <header class="page-head">
+    <div class="wrap">
+      <ol class="breadcrumb" role="list">
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">Terms &amp; Conditions</li>
+      </ol>
+      <h1 class="h2">
+        <span>Commercial sales</span>
+        <span class="page-head__title-2">terms and conditions.</span>
+      </h1>
+      <p class="lead muted page-head__lead">The terms that apply to sales by {SITE.razonSocial}, in the official letterhead document.</p>
+      <div class="hero__ctas terms__ctas">
+        <a class="btn btn--accent" href={SITE.terminosPdf} download>Download PDF <Icon name="arrow" /></a>
+        <a class="btn btn--outline" href={SITE.terminosPdf} target="_blank" rel="noopener">Open in a new tab</a>
+      </div>
+    </div>
+  </header>
+  <section class="wrap terms">
+    <object class="terms__pdf" data={`${SITE.terminosPdf}#view=FitH`} type="application/pdf" aria-label="Commercial Sales Terms and Conditions (PDF)">
+      <p class="terms__fallback">
+        Your browser cannot display the PDF here. <a href={SITE.terminosPdf} target="_blank" rel="noopener">Open the Commercial Sales Terms and Conditions (PDF)</a>.
+      </p>
+    </object>
+    <p class="muted terms__contact">Questions about these terms? Write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+  </section>
+</Base>

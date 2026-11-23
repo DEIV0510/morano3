@@ -1,0 +1,17 @@
+---
+// Pantalla de carga: los marcos de Morano USA aparecen (barrido diagonal), el
+// nombre entra de izquierda a derecha y la cortina sube. Solo en la primera
+// visita de la sesión; sale en cuanto la foto principal está lista (máx. ~1,9 s)
+// y, sin JavaScript, sola.
+import brand from '../data/brand.json';
+const m = brand['usa-mark-reverse'];
+const w = brand['usa-word-reverse'];
+---
+
+<div class="loader" data-loader role="status" aria-label="Loading Morano USA">
+  <div class="loader__inner">
+    <img class="loader__mark" src="/brand/usa-mark-reverse.png" width={m.width} height={m.height} alt="" />
+    <img class="loader__word" src="/brand/usa-word-reverse.png" width={w.width} height={w.height} alt="" />
+  </div>
+  <div class="loader__bar" aria-hidden="true"><span></span></div>
+</div>

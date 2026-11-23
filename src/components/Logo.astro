@@ -1,0 +1,35 @@
+---
+// Logotipo oficial de Morano USA LLC (marcos + nombre, horizontal). Lleva las dos
+// versiones: la de fondo claro y la de fondo oscuro; el CSS muestra la que corresponde.
+import brand from '../data/brand.json';
+interface Props {
+  class?: string;
+  /** auto = según el estado de la cabecera; light/dark = fondo fijo. */
+  on?: 'auto' | 'light' | 'dark';
+  eager?: boolean;
+}
+const { class: cls = '', on = 'auto', eager = true } = Astro.props;
+const d = brand.usa;
+---
+
+<span class:list={['logo', `logo--${on}`, cls]}>
+  {
+    on !== 'dark' && (
+      <img class="logo__img logo__img--light" src="/brand/usa.png" width={d.width} height={d.height} alt="Morano USA LLC" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    )
+  }
+  {
+    on !== 'light' && (
+      <img
+        class="logo__img logo__img--dark"
+        src="/brand/usa-reverse.png"
+        width={d.width}
+        height={d.height}
+        alt={on === 'dark' ? 'Morano USA LLC' : ''}
+        aria-hidden={on === 'dark' ? undefined : 'true'}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+      />
+    )
+  }
+</span>

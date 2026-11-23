@@ -1,0 +1,166 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        }
+      ]
+    },
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(img|fonts|brand)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/home/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/morano-gruppo",
+      "destination": "/#about",
+      "permanent": true
+    },
+    {
+      "source": "/morano-gruppo/",
+      "destination": "/#about",
+      "permanent": true
+    },
+    {
+      "source": "/el-tesoro",
+      "destination": "/#products",
+      "permanent": true
+    },
+    {
+      "source": "/el-tesoro/",
+      "destination": "/#products",
+      "permanent": true
+    },
+    {
+      "source": "/morano-imperial-roof",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/morano-imperial-roof/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/piastrelle-di-morano",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/piastrelle-di-morano/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/casa-disegno",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/casa-disegno/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/#quote",
+      "permanent": true
+    },
+    {
+      "source": "/contact/",
+      "destination": "/#quote",
+      "permanent": true
+    },
+    {
+      "source": "/politica-privacidad",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/politica-privacidad/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/hola-mundo",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/hola-mundo/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/feed",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/feed/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/comments/feed",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/comments/feed/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/category/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/category/:path*/",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}

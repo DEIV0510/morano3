@@ -1,0 +1,98 @@
+---
+// Solicitud de cotización: los mismos campos que la web actual. El formulario
+// abre el correo con la solicitud redactada para sales@moranousa.com (la web
+// no guarda datos).
+import Icon from './Icon.astro';
+import { HOME, SITE } from '../lib/site.ts';
+---
+
+<section class="contact" id="quote" aria-labelledby="contact-title">
+  <div class="contact__grid">
+    <div class="contact__aside">
+      <div class="contact__aside-inner">
+        <p class="label reveal">Commercial inquiry</p>
+        <h2 id="contact-title" class="h2 contact__title reveal">
+          <span>Request</span>
+          <span>a quote.</span>
+        </h2>
+        <p class="contact__intro reveal">{HOME.quoteIntro}</p>
+        <dl class="contact__list reveal">
+          <div>
+            <dt>Email</dt>
+            <dd><a href={`mailto:${SITE.email}`}>{SITE.email}</a></dd>
+          </div>
+          <div>
+            <dt>WhatsApp</dt>
+            <dd><a href={`https://wa.me/${SITE.whatsapp}`} rel="noopener" target="_blank">Chat with our team</a></dd>
+          </div>
+          <div>
+            <dt>Office</dt>
+            <dd>
+              <a href={SITE.mapsUrl} rel="noopener" target="_blank">
+                {SITE.direccion[0]}
+                <br />
+                {SITE.direccion[1]}
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="contact__form-wrap">
+      <form class="form-grid" data-contact-form novalidate data-email={SITE.email}>
+        <label class="field">
+          <span>First name</span>
+          <input class="input" name="first" autocomplete="given-name" required minlength="2" maxlength="80" />
+        </label>
+        <label class="field">
+          <span>Last name</span>
+          <input class="input" name="last" autocomplete="family-name" required minlength="2" maxlength="80" />
+        </label>
+        <label class="field">
+          <span>Company</span>
+          <input class="input" name="company" autocomplete="organization" required minlength="2" maxlength="120" />
+        </label>
+        <label class="field">
+          <span>Corporate email</span>
+          <input class="input" name="email" type="email" autocomplete="email" required maxlength="160" />
+        </label>
+        <label class="field">
+          <span>Phone</span>
+          <input class="input" name="phone" type="tel" inputmode="tel" autocomplete="tel" required pattern="[+0-9 ()\-.]{7,24}" maxlength="24" />
+        </label>
+        <label class="field">
+          <span>Country / State</span>
+          <input class="input" name="location" autocomplete="address-level1" required minlength="2" maxlength="80" />
+        </label>
+        <label class="field">
+          <span>Product of interest</span>
+          <select class="input" name="product" required data-product-select>
+            <option value="">Select a product</option>
+            {HOME.productOptions.map((o) => <option>{o}</option>)}
+          </select>
+        </label>
+        <label class="field">
+          <span>Required packaging</span>
+          <select class="input" name="packaging" required>
+            <option value="">Select packaging</option>
+            {HOME.packagingOptions.map((o) => <option>{o}</option>)}
+          </select>
+        </label>
+        <label class="field field--full">
+          <span>Message <span class="opt">(optional)</span></span>
+          <textarea class="input" name="message" rows="5" maxlength="2000" placeholder="Volumes, specifications, destination, timeline…"></textarea>
+        </label>
+        <div class="field--full form-actions">
+          <button class="btn btn--accent" type="submit">Send request <Icon name="arrow" /></button>
+          <p class="form-status" data-form-status role="status" aria-live="polite">Your email app will open with the request ready to send to {SITE.email}.</p>
+        </div>
+      </form>
+      <div class="form-done" data-form-done hidden tabindex="-1">
+        <p class="h3">Request ready</p>
+        <p class="muted">If your email app did not open, write to us directly at <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+        <button class="link" type="button" data-form-again>Send another request</button>
+      </div>
+    </div>
+  </div>
+</section>

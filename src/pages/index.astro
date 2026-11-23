@@ -1,0 +1,326 @@
+---
+import Base from '../layouts/Base.astro';
+import Picture from '../components/Picture.astro';
+import Icon from '../components/Icon.astro';
+import Contacto from '../components/Contacto.astro';
+import brand from '../data/brand.json';
+import { HOME, SITE } from '../lib/site.ts';
+import map from '../data/map.json';
+
+// Mapa: recorte de las Américas del mapa de puntos del grupo (proyección
+// equirectangular de map.json) con la ruta Colombia → Estados Unidos.
+const { points } = map;
+const co = points.colombia;
+const us = points.usa;
+const VB = { x: 0, y: 110, w: 480, h: 390 };
+const pct = (p: { x: number; y: number }) => ({ left: `${(((p.x - VB.x) / VB.w) * 100).toFixed(2)}%`, top: `${(((p.y - VB.y) / VB.h) * 100).toFixed(2)}%` });
+const arc = `M${co.x} ${co.y} C ${co.x + 46} ${co.y - 58}, ${us.x + 78} ${us.y + 22}, ${us.x} ${us.y}`;
+const route = [
+  { n: '01', nombre: 'Colombia', texto: 'Integrated agricultural origin, extraction, refining and packaging through the affiliated operations of Morano Gruppo.' },
+  { n: '02', nombre: 'United States', texto: 'Commercialized through Morano USA, LLC, the U.S. commercial gateway to Morano Gruppo.' },
+];
+const g = brand['gruppo-v'];
+---
+
+<Base
+  title="Morano USA | Palm Oils, Vegetable Fats & Private Label for the U.S. Market"
+  description="Morano USA, LLC is the U.S. commercial gateway to Morano Gruppo: palm oils, vegetable fats, packaged and private-label products backed by an integrated supply chain from Colombia to the United States."
+  path="/"
+  overlayHeader
+  showLoader
+>
+  <!-- Portada -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero__media" data-parallax="0.12">
+      <Picture name="puerto" alt="" sizes="100vw" class="hero__pic" priority />
+    </div>
+    <div class="hero__shade" aria-hidden="true"></div>
+    <div class="wrap hero__grid">
+      <div class="hero__content">
+        <p class="label hero__label">{HOME.heroLabel}</p>
+        <h1 id="hero-title" class="display hero__title">
+          <span class="visually-hidden">Morano USA — </span>
+          <span class="hero__line"><span>{HOME.heroTitulo[0]}</span></span>
+          <span class="hero__line"><span>{HOME.heroTitulo[1]}</span></span>
+        </h1>
+        <p class="lead hero__sub">{HOME.heroTexto}</p>
+        <div class="hero__ctas">
+          <a class="btn btn--accent" href="#products">Explore our products <Icon name="arrow" /></a>
+          <a class="btn btn--ghost" href="#quote">Request a quote</a>
+        </div>
+      </div>
+      <figure class="hero__inset">
+        <div class="framed hero__inset-frame">
+          <div class="photo"><Picture name="cosecha" alt="Palm grower holding a freshly harvested fruit bunch in Colombia" sizes="(min-width: 1024px) 22vw, 1px" /></div>
+        </div>
+        <figcaption>Origin: Colombia</figcaption>
+      </figure>
+    </div>
+    <div class="wrap">
+      <div class="hero__foot">
+        <ul class="hero__trust" role="list">
+          <li>Colombia → United States</li>
+          <li>Palm oils &amp; vegetable fats</li>
+          <li>A Morano Gruppo company</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiénes somos -->
+  <section class="section about" id="about" aria-labelledby="about-title">
+    <div class="wrap grid about__grid">
+      <div class="about__text">
+        <p class="label reveal">Who we are</p>
+        <h2 id="about-title" class="h2 reveal">
+          <span>Built for</span>
+          <span class="about__title-2">global supply.</span>
+        </h2>
+        <p class="lead reveal">{HOME.about}</p>
+        <a class="about__gruppo reveal" href={SITE.gruppo[0].url} rel="noopener" target="_blank">
+          <img src="/brand/gruppo-v.png" width={g.width} height={g.height} alt="Morano Gruppo" loading="lazy" decoding="async" />
+          <span>
+            <span class="about__gruppo-k">Part of</span>
+            <span class="about__gruppo-n">Morano Gruppo <Icon name="arrow" /></span>
+          </span>
+        </a>
+      </div>
+      <figure class="about__media framed reveal">
+        <div class="reveal-mask photo">
+          <Picture name="planta-aerea" alt="Aerial view of an affiliated industrial plant of Morano Gruppo in Colombia" sizes="(min-width: 1024px) 40vw, 92vw" />
+        </div>
+        <figcaption>Affiliated industrial operations · Colombia</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="purpose" aria-label="Produced in Colombia, commercialized in the United States">
+    <div class="wrap purpose__grid">
+      <div class="purpose__item reveal">
+        <h2 class="purpose__h">Produced in Colombia</h2>
+        <p class="purpose__text">{HOME.produced}</p>
+      </div>
+      <div class="purpose__item reveal" data-delay="120">
+        <h2 class="purpose__h">Commercialized in the U.S.</h2>
+        <p class="purpose__text">{HOME.commercialized}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cadena de suministro -->
+  <section class="section chain" id="supply-chain" aria-labelledby="chain-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label reveal">Integrated network</p>
+        <h2 id="chain-title" class="h2 h2--md reveal">
+          <span>A direct commercial path</span>
+          <span class="section-head__title-2">from production to market.</span>
+        </h2>
+      </div>
+      <ol class="chain__list" role="list">
+        {
+          HOME.chain.map((c, i) => (
+            <li class="chain__item reveal" data-delay={i * 90}>
+              <div class="photo chain__photo">
+                <Picture name={c.foto as any} alt={c.alt} sizes="(min-width: 1100px) 23vw, (min-width: 640px) 46vw, 46vw" />
+              </div>
+              <span class="chain__n num">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="chain__title">{c.titulo}</h3>
+              <p class="chain__text">{c.texto}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Ruta Colombia → Estados Unidos -->
+  <section class="section connection route" aria-labelledby="route-title">
+    <div class="wrap">
+      <h2 id="route-title" class="h2 connection__title reveal">
+        <span>From Colombia</span>
+        <span class="connection__title-2">to the United States.</span>
+      </h2>
+      <div class="connection__body">
+        <figure class="connection__map route__map" data-map>
+          <svg class="connection__routes" viewBox={`${VB.x} ${VB.y} ${VB.w} ${VB.h}`} aria-hidden="true" focusable="false">
+            <image href="/img/mapa-puntos.svg" x="0" y="0" width={map.width} height={map.height} />
+            <path class="connection__arc-base" d={arc} />
+            <path class="connection__arc" d={arc} pathLength="100" />
+            <g class="connection__waves">
+              <circle cx={us.x} cy={us.y} r="14" />
+              <circle cx={us.x} cy={us.y} r="14" />
+            </g>
+            <circle class="connection__node connection__node--co" cx={co.x} cy={co.y} r="4.5" />
+            <circle class="connection__node connection__node--to" cx={us.x} cy={us.y} r="4.5" />
+          </svg>
+          <span class="connection__label route__label--co" style={pct(co)}><span class="num">01</span> Colombia</span>
+          <span class="connection__label route__label--us" style={pct(us)}><span class="num">02</span> United States</span>
+          <figcaption class="visually-hidden">Stylized map: Morano Gruppo operations in Colombia connected with Morano USA in the United States.</figcaption>
+        </figure>
+        <ol class="connection__nodes" role="list">
+          {
+            route.map((p, i) => (
+              <li class="connection__item reveal" data-delay={i * 120}>
+                <span class="connection__n num">{p.n}</span>
+                <h3 class="h3">{p.nombre}</h3>
+                <p>{p.texto}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Productos -->
+  <section class="section products" id="products" aria-labelledby="products-title">
+    <div class="wrap">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="label reveal">Product portfolio</p>
+          <h2 id="products-title" class="h2 h2--md reveal">
+            <span>Oils and fats</span>
+            <span class="section-head__title-2">for modern industry.</span>
+          </h2>
+        </div>
+        <p class="muted reveal">{HOME.productsIntro}</p>
+      </div>
+      <ul class="products__list" role="list">
+        {
+          HOME.products.map((p, i) => (
+            <li class="product reveal" data-delay={i * 90}>
+              <div class="photo product__photo">
+                <Picture name={p.foto as any} alt={p.alt} sizes="(min-width: 1024px) 30vw, (min-width: 700px) 46vw, 92vw" />
+              </div>
+              <div class="product__body">
+                <span class="product__n num">{String(i + 1).padStart(2, '0')}</span>
+                <h3 class="product__title">{p.titulo}</h3>
+                <p class="product__text">{p.texto}</p>
+                <a class="link product__link" href="#quote" data-product={p.interes}>
+                  Request information <Icon name="arrow" />
+                </a>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Marca propia -->
+  <section class="section pl" id="private-label" aria-labelledby="pl-title">
+    <div class="wrap grid pl__grid">
+      <div class="pl__intro">
+        <p class="label reveal">Private label</p>
+        <h2 id="pl-title" class="h2 h2--md reveal">
+          <span>Your brand.</span>
+          <span class="pl__title-2">Our supply chain.</span>
+        </h2>
+        <p class="lead reveal">{HOME.privateLabel}</p>
+        <a class="btn btn--accent reveal" href="#quote" data-product="Private Label">Start a project <Icon name="arrow" /></a>
+      </div>
+      <ol class="pl__steps" role="list">
+        {
+          HOME.privateSteps.map((s, i) => (
+            <li class="pl__step reveal" data-delay={i * 80}>
+              <span class="pl__n num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="pl__name">{s}</span>
+            </li>
+          ))
+        }
+        <li class="pl__step pl__step--end reveal" data-delay="320">
+          <span class="pl__n num">05</span>
+          <span class="pl__name">U.S. commercial distribution</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Industrias -->
+  <section class="section industries-sec" id="industries" aria-labelledby="industries-title">
+    <div class="wrap grid about__grid">
+      <div class="about__text">
+        <p class="label reveal">Industries we serve</p>
+        <h2 id="industries-title" class="h2 h2--md reveal">
+          <span>Built around</span>
+          <span class="about__title-2">your application.</span>
+        </h2>
+        <p class="muted reveal">Ingredients and formats for manufacturers, distributors, wholesalers, foodservice operators and industrial buyers.</p>
+      </div>
+      <ol class="industries" role="list">
+        {
+          HOME.industries.map((ind, i) => (
+            <li class="industries__item reveal" data-delay={(i % 4) * 70}>
+              <span class="industries__n num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="industries__name">{ind}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Formatos -->
+  <section class="section formats" aria-labelledby="formats-title">
+    <div class="wrap grid sustain__grid sustain__grid--flip">
+      <figure class="sustain__photo framed reveal">
+        <div class="reveal-mask photo">
+          <Picture name="bodega" alt="Warehouse with palletized packaged product" sizes="(min-width: 1024px) 36vw, 88vw" />
+        </div>
+      </figure>
+      <div class="sustain__text">
+        <p class="label reveal">Flexible supply</p>
+        <h2 id="formats-title" class="h2 h2--md reveal">
+          <span>Formats for commercial</span>
+          <span class="sustain__title-2">and industrial needs.</span>
+        </h2>
+        <ol class="axes" role="list">
+          {
+            HOME.formats.map((f, i) => (
+              <li class="axes__item reveal" data-delay={(i % 2) * 90}>
+                <span class="axes__n num">{String(i + 1).padStart(2, '0')}</span>
+                <h3 class="axes__title">{f.titulo}</h3>
+                <p>{f.texto}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sostenibilidad -->
+  <section class="section sustain" id="sustainability" aria-labelledby="sustain-title">
+    <div class="wrap grid sustain__grid">
+      <figure class="sustain__photo framed reveal">
+        <div class="reveal-mask photo">
+          <Picture name="racimo" alt="Close-up of a fresh oil palm fruit bunch" sizes="(min-width: 1024px) 36vw, 88vw" />
+        </div>
+      </figure>
+      <div class="sustain__text">
+        <p class="label reveal">Responsible supply</p>
+        <h2 id="sustain-title" class="h2 h2--md reveal">
+          <span>Global vision,</span>
+          <span class="sustain__title-2">careful accountability.</span>
+        </h2>
+        <p class="lead reveal">{HOME.sustainability}</p>
+        <ul class="iscc__list sustain__axes reveal" role="list">
+          {HOME.sustainabilityAxes.map((a) => <li>{a}</li>)}
+        </ul>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="iscc reveal">
+        <img class="iscc__seal" src="/img/iscc-520.webp" width="520" height="188" alt="ISCC Certificate Holder — International Sustainability & Carbon Certification" loading="lazy" decoding="async" />
+        <div class="iscc__body">
+          <h3 class="iscc__title">Documentation on request</h3>
+          <p class="muted">{HOME.sustainabilityNote}</p>
+        </div>
+        <a class="btn btn--outline iscc__cta" href="#quote">Request documentation <Icon name="arrow" /></a>
+      </div>
+    </div>
+  </section>
+
+  <Contacto />
+</Base>

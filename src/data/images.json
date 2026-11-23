@@ -1,0 +1,130 @@
+{
+  "puerto": {
+    "width": 1920,
+    "height": 1088,
+    "widths": [
+      960,
+      1440,
+      1920
+    ],
+    "color": "#484848",
+    "v": "706bb26f"
+  },
+  "cosecha": {
+    "width": 1600,
+    "height": 2401,
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "color": "#383828",
+    "v": "4202ced5"
+  },
+  "planta-aerea": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "color": "#f8f8f8",
+    "v": "e1c138cb"
+  },
+  "cultivo": {
+    "width": 1600,
+    "height": 1066,
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "color": "#384828",
+    "v": "6777f055"
+  },
+  "refineria": {
+    "width": 1280,
+    "height": 960,
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "color": "#787868",
+    "v": "6da3709f"
+  },
+  "envasado": {
+    "width": 960,
+    "height": 1280,
+    "widths": [
+      640,
+      960
+    ],
+    "color": "#787878",
+    "v": "f0ace2cd"
+  },
+  "exportacion": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      640,
+      960,
+      1200
+    ],
+    "color": "#181818",
+    "v": "f116b624"
+  },
+  "p-aceites": {
+    "width": 912,
+    "height": 912,
+    "widths": [
+      640,
+      912
+    ],
+    "color": "#989898",
+    "v": "729a2a3f"
+  },
+  "p-grasas": {
+    "width": 912,
+    "height": 912,
+    "widths": [
+      640,
+      912
+    ],
+    "color": "#b8b8b8",
+    "v": "3b9d51e9"
+  },
+  "p-marca-propia": {
+    "width": 912,
+    "height": 912,
+    "widths": [
+      640,
+      912
+    ],
+    "color": "#686868",
+    "v": "785e21eb"
+  },
+  "bodega": {
+    "width": 980,
+    "height": 1306,
+    "widths": [
+      640,
+      960,
+      980
+    ],
+    "color": "#787868",
+    "v": "ce982c8e"
+  },
+  "racimo": {
+    "width": 1600,
+    "height": 2401,
+    "widths": [
+      640,
+      960,
+      1280
+    ],
+    "color": "#181818",
+    "v": "f465fac6"
+  }
+}

@@ -1,0 +1,10 @@
+---
+// Botón flotante de WhatsApp (el mismo número que la web actual).
+import Icon from './Icon.astro';
+import { SITE } from '../lib/site.ts';
+const href = `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(SITE.whatsappTexto)}`;
+---
+
+<a class="wa-float" href={href} rel="noopener" target="_blank" aria-label="Chat with Morano USA on WhatsApp (opens in a new tab)">
+  <Icon name="whatsapp" size={26} />
+</a>

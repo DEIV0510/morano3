@@ -1,0 +1,56 @@
+---
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+import brand from '../data/brand.json';
+import { NAV, SITE } from '../lib/site.ts';
+const year = new Date().getFullYear();
+const g = brand['gruppo-v'];
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <Logo class="site-footer__logo" on="dark" eager={false} />
+        <p class="site-footer__desc">{SITE.descripcion}</p>
+        <p class="site-footer__slogan">{SITE.lema}</p>
+      </div>
+      <nav class="site-footer__col" aria-label="Site">
+        <h2 class="site-footer__h">Explore</h2>
+        <ul role="list">
+          <li><a href="/">Home</a></li>
+          {NAV.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+          <li><a href="/#quote">Request a Quote</a></li>
+        </ul>
+      </nav>
+      <nav class="site-footer__col" aria-label="Morano Gruppo">
+        <h2 class="site-footer__h">Morano Gruppo</h2>
+        <a class="site-footer__gruppo" href={SITE.gruppo[0].url} rel="noopener" target="_blank" aria-label="Morano Gruppo (opens in a new tab)">
+          <img src="/brand/gruppo-v-reverse.png" width={g.width} height={g.height} alt="Morano Gruppo" loading="lazy" decoding="async" />
+        </a>
+        <ul role="list">
+          {SITE.gruppo.map((s) => <li><a href={s.url} rel="noopener" target="_blank">{s.nombre}</a></li>)}
+        </ul>
+      </nav>
+      <address class="site-footer__col site-footer__contact">
+        <h2 class="site-footer__h">Contact</h2>
+        <p>
+          <span class="site-footer__place">United States</span>
+          <a href={SITE.mapsUrl} rel="noopener" target="_blank">
+            {SITE.direccion[0]}
+            <br />
+            {SITE.direccion[1]}
+          </a>
+        </p>
+        <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <p class="site-footer__social">
+          <a href={`https://wa.me/${SITE.whatsapp}`} rel="noopener" target="_blank"><Icon name="whatsapp" size={20} /> WhatsApp</a>
+        </p>
+      </address>
+    </div>
+    <div class="site-footer__bottom">
+      <p>© {year} {SITE.razonSocial}. All rights reserved.</p>
+      <p><a href={SITE.terminos}>Commercial Sales Terms &amp; Conditions</a></p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,30 @@
+{
+  "usa": {
+    "width": 988,
+    "height": 165
+  },
+  "usa-reverse": {
+    "width": 988,
+    "height": 165
+  },
+  "usa-mark": {
+    "width": 215,
+    "height": 165
+  },
+  "usa-mark-reverse": {
+    "width": 215,
+    "height": 165
+  },
+  "usa-word-reverse": {
+    "width": 743,
+    "height": 86
+  },
+  "gruppo-v": {
+    "width": 443,
+    "height": 260
+  },
+  "gruppo-v-reverse": {
+    "width": 443,
+    "height": 260
+  }
+}
