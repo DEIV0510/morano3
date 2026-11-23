@@ -85,9 +85,12 @@ const g = brand['gruppo-v'];
           </span>
         </a>
       </div>
-      <figure class="about__media framed reveal">
-        <div class="reveal-mask photo">
-          <Picture name="planta-aerea" alt="Aerial view of an affiliated industrial plant of Morano Gruppo in Colombia" sizes="(min-width: 1024px) 40vw, 92vw" />
+      <figure class="about__media reveal">
+        {/* El marco rojo va solo alrededor de la foto; el pie queda fuera */}
+        <div class="framed about__frame">
+          <div class="reveal-mask photo">
+            <Picture name="planta-aerea" alt="Aerial view of an affiliated industrial plant of Morano Gruppo in Colombia" sizes="(min-width: 1024px) 40vw, 92vw" />
+          </div>
         </div>
         <figcaption>Affiliated industrial operations · Colombia</figcaption>
       </figure>
@@ -229,7 +232,7 @@ const g = brand['gruppo-v'];
             </li>
           ))
         }
-        <li class="pl__step pl__step--end reveal" data-delay="320">
+        <li class="pl__step reveal" data-delay="320">
           <span class="pl__n num">05</span>
           <span class="pl__name">U.S. commercial distribution</span>
         </li>

@@ -54,7 +54,7 @@ export const HOME = {
   products: [
     {
       titulo: 'Crude & Refined Palm Oils',
-      texto: 'CPO, RBD Palm Oil and RBD Palm Olein for industrial applications and further processing.',
+      texto: 'CPO, CPKO, RBD Palm Oil and RBD Palm Olein for industrial applications and further processing.',
       foto: 'p-aceites',
       alt: 'Refined palm oil in a laboratory flask with palm fruit',
       interes: 'RBD Palm Oil',
@@ -102,6 +102,6 @@ export const HOME = {
   sustainabilityAxes: ['Responsible sourcing', 'Traceability', 'Circular economy', 'Biomass utilization', 'Resource efficiency'],
 
   quoteIntro: 'Tell our U.S. commercial team what you need. We’ll follow up regarding product information, packaging and commercial terms.',
-  productOptions: ['RBD Palm Oil', 'RBD Palm Olein', 'RBD Palm Stearin', 'Vegetable Shortening', 'Packaged Edible Oil', 'Private Label', 'Industrial Ingredients', 'Other'],
+  productOptions: ['Crude Palm Oil (CPO)', 'Crude Palm Kernel Oil (CPKO)', 'RBD Palm Oil', 'RBD Palm Olein', 'RBD Palm Stearin', 'Vegetable Shortening', 'Packaged Edible Oil', 'Private Label', 'Industrial Ingredients', 'Other'],
   packagingOptions: ['Bottles', 'Jugs', 'Drums', 'Flexitank', 'Isotank', 'Bulk', 'Other'],
 };
